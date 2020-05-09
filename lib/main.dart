@@ -36,7 +36,7 @@ class MainRoute extends StatelessWidget {
     if (isLogInSuccess) {
       return HomeScreen();
     } else {
-      return LogInScreen();
+      return AuthPage();
     }
   }
 }
