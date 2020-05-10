@@ -132,8 +132,8 @@ class AuthPage extends StatelessWidget {
                   fit: BoxFit.cover,
                   width: 50,
                   height: 50,
-                  placeholder: "assets/loading.gif",
-                  image:
+                  placeholder: "assets/loading.gif", // loading.gif 가 pubspec.yaml에 추가돼있어야 함
+                 image:
                   "http://storage.enuri.info/pic_upload/knowbox2/07210923620180618c3f03826-aa73-46e1-a272-45a97a36e5fe.gif"),
             ),
           ),
