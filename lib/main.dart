@@ -5,6 +5,7 @@ import 'models/model_asset.dart';
 import 'screens/screen_home.dart';
 import 'screens/screen_logIn.dart';
 
+//dev 테스트테스
 
 //앱의 기초가 되는 부분. 아래 MainApp 은 혹시 앱 전체를 아우르는 provider 변수가 필요할 경우나(추측),
 //전체 테마 등을 변경할 때만 수정하면 될 듯
