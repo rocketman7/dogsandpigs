@@ -1,3 +1,5 @@
+import 'package:dogsandpigs/data/join_or_login.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -81,14 +83,19 @@ class MainApp extends StatelessWidget {
 //로그인이 되었다면 앱의 메인화면인 home screen 을 호출한다(아마도 log in할 때의 data 를 가지고?). 그 후의 모든 화면은 home screen 으로부터 파생되면 될듯???
 class MainRoute extends StatelessWidget {
   //나중에 이 부분과 밑 build 안쪽 부분을 실제 로그인 여부를 가릴 수 있는 코드로 수정해준다.
-  final bool isLogInSuccess = true;
-
   @override
   Widget build(BuildContext context) {
-    if (isLogInSuccess) {
-      return HomeScreen();
-    } else {
-      return AuthPage();
-    }
+    return StreamBuilder<FirebaseUser>(
+        stream: FirebaseAuth.instance.onAuthStateChanged,
+        builder: (context, snapshot) {
+          if (snapshot.data == null) {
+            return ChangeNotifierProvider<JoinOrLogin>.value(
+                value: JoinOrLogin(),
+                child: AuthPage());
+          } else {
+            return HomeScreen(email: snapshot.data.email);
+          }
+        }
+    );
   }
 }
